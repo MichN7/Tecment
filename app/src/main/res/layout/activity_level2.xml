@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Level1Activity">
+
+    <TextView
+        android:id="@+id/txtPregunta"
+        android:layout_width="353dp"
+        android:layout_height="126dp"
+        android:layout_marginBottom="8dp"
+        android:gravity="center"
+        android:text='___ to Australia,Ginny? "Yes, two years ago&quot;.'
+        android:textColor="@color/colorAccent"
+        android:textSize="35dp"
+        app:layout_constraintBottom_toTopOf="@+id/radioGroup"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.7" />
+
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="276dp"
+        android:layout_height="286dp"
+        android:layout_marginBottom="56dp"
+        app:layout_constraintBottom_toTopOf="@+id/btn_next_question"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <RadioButton
+            android:id="@+id/rbtnRespuestaA"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_weight="1"
+            android:text="Did you ever go"
+            android:textSize="20dp" />
+
+        <RadioButton
+            android:id="@+id/rbtnRespuestaB"
+            android:layout_width="match_parent"
+            android:layout_height="59dp"
+            android:layout_weight="1"
+            android:text="Do you ever go"
+            android:textSize="20dp" />
+
+        <RadioButton
+            android:id="@+id/rbtnRespuestaC"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_weight="1"
+            android:text="Have you ever been"
+            android:textSize="20dp" />
+
+        <RadioButton
+            android:id="@+id/rbtnRespuestaD"
+            android:layout_width="match_parent"
+            android:layout_height="62dp"
+            android:layout_weight="1"
+            android:text="Are you ever going"
+            android:textSize="20dp" />
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/btn_next_question"
+        android:layout_width="352dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="44dp"
+        android:background="?attr/colorPrimaryDark"
+        android:text="Next"
+        android:textAllCaps="false"
+        android:textColor="@color/common_google_signin_btn_text_dark_default"
+        android:textSize="25dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_conversion_absoluteHeight="48dp"
+        tools:layout_conversion_absoluteWidth="368dp" />
+
+</android.support.constraint.ConstraintLayout>

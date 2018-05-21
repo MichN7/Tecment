@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#866DEA"
+    tools:context=".TotalActivity">
+
+    <TextView
+        android:id="@+id/txtTotal"
+        android:layout_width="162dp"
+        android:layout_height="41dp"
+        android:layout_marginBottom="80dp"
+        android:text="Number"
+        android:textColor="@color/common_google_signin_btn_text_dark_default"
+
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/btn_next_question"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.582"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/txtGrade"
+        android:layout_width="121dp"
+        android:layout_height="47dp"
+        android:text="GRADE"
+        android:textColor="@color/common_google_signin_btn_text_dark_default"
+        android:textSize="35sp"
+        app:layout_constraintBottom_toTopOf="@+id/txtCorrect"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.642" />
+
+    <TextView
+        android:id="@+id/txtCorrect"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="grade"
+        android:textColor="@color/common_google_signin_btn_text_dark_default"
+        android:textSize="30sp"
+        android:gravity="center"
+        app:layout_constraintBottom_toTopOf="@+id/txtTotal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtGrade" />
+
+    <Button
+        android:id="@+id/btn_next_question"
+        android:layout_width="355dp"
+        android:layout_height="59dp"
+        android:layout_marginBottom="100dp"
+        android:background="@color/bg_register"
+        android:text="Done"
+        android:textAllCaps="false"
+        android:textColor="@color/common_google_signin_btn_text_dark_default"
+        android:textSize="25dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</android.support.constraint.ConstraintLayout>
