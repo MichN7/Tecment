@@ -2,6 +2,8 @@ package com.michellereyes.tecment;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -13,6 +15,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -33,7 +36,6 @@ public class LevelsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_levels);
 
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
-
         mViewPager = (ViewPager) findViewById(R.id.container);
         mViewPager.setAdapter(mSectionsPagerAdapter);
 
@@ -60,6 +62,28 @@ public class LevelsActivity extends AppCompatActivity {
                                  Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_level1, container, false);
             Button button = (Button) rootView.findViewById(R.id.btn_do_level1);
+            Button buttonAns = (Button)rootView.findViewById(R.id.btn_check_level1);
+
+            SharedPreferences pref = getActivity().getSharedPreferences("Usuario", 0);
+            String done = pref.getString("nivelUnoHecho",null);
+
+            if(done.equals("true")){
+                button.setEnabled(false);
+                buttonAns.setEnabled(true);
+            }else{
+                buttonAns.setEnabled(false);
+            }
+
+            buttonAns.setOnClickListener(new View.OnClickListener(){
+
+                @Override
+                public void onClick(View v) {
+                    Context context;
+                    context = getActivity();
+                    Intent intent = new Intent(context, TotalActivity.class);
+                    startActivity(intent);
+                }
+            });
 
             button.setOnClickListener(new View.OnClickListener(){
 
@@ -71,6 +95,7 @@ public class LevelsActivity extends AppCompatActivity {
                     startActivity(intent);
                 }
             });
+
             return rootView;
         }
     }
@@ -94,6 +119,29 @@ public class LevelsActivity extends AppCompatActivity {
                                  Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_level2, container, false);
             Button button = (Button) rootView.findViewById(R.id.btn_do_level2);
+            Button buttonAns = (Button)rootView.findViewById(R.id.btn_check_level2);
+
+            SharedPreferences pref = getActivity().getSharedPreferences("Usuario", 0);
+            String done = pref.getString("nivelDosHecho",null);
+
+            if(done.equals("true")){
+                button.setEnabled(false);
+                buttonAns.setEnabled(true);
+            }else{
+                buttonAns.setEnabled(false);
+            }
+
+            buttonAns.setOnClickListener(new View.OnClickListener(){
+
+                @Override
+                public void onClick(View v) {
+                    Context context;
+                    context = getActivity();
+                    Intent intent = new Intent(context, TotalLevel2Activity.class);
+                    startActivity(intent);
+                }
+            });
+
             button.setOnClickListener(new View.OnClickListener(){
 
                 @Override
@@ -127,6 +175,28 @@ public class LevelsActivity extends AppCompatActivity {
                                  Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_level3, container, false);
             Button button = (Button) rootView.findViewById(R.id.btn_do_level3);
+            Button buttonAns = (Button)rootView.findViewById(R.id.btn_check_level3);
+
+            SharedPreferences pref = getActivity().getSharedPreferences("Usuario", 0);
+            String done = pref.getString("nivelTresHecho",null);
+
+            if(done.equals("true")){
+                button.setEnabled(false);
+                buttonAns.setEnabled(true);
+            }else{
+                buttonAns.setEnabled(false);
+            }
+
+            buttonAns.setOnClickListener(new View.OnClickListener(){
+
+                @Override
+                public void onClick(View v) {
+                    Context context;
+                    context = getActivity();
+                    Intent intent = new Intent(context, TotalLevel3Activity.class);
+                    startActivity(intent);
+                }
+            });
             button.setOnClickListener(new View.OnClickListener(){
 
                 @Override
@@ -160,6 +230,28 @@ public class LevelsActivity extends AppCompatActivity {
                                  Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_level4, container, false);
             Button button = (Button) rootView.findViewById(R.id.btn_do_level4);
+            Button buttonAns = (Button)rootView.findViewById(R.id.btn_check_level4);
+
+            SharedPreferences pref = getActivity().getSharedPreferences("Usuario", 0);
+            String done = pref.getString("nivelCuatroHecho",null);
+
+            if(done.equals("true")){
+                button.setEnabled(false);
+                buttonAns.setEnabled(true);
+            }else{
+                buttonAns.setEnabled(false);
+            }
+
+            buttonAns.setOnClickListener(new View.OnClickListener(){
+
+                @Override
+                public void onClick(View v) {
+                    Context context;
+                    context = getActivity();
+                    Intent intent = new Intent(context, TotalLevel4Activity.class);
+                    startActivity(intent);
+                }
+            });
             button.setOnClickListener(new View.OnClickListener(){
 
                 @Override

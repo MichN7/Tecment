@@ -20,7 +20,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.HashMap;
 
-public class TotalActivity extends AppCompatActivity {
+public class TotalLevel4Activity extends AppCompatActivity {
 
     private TextView txtTotal,txtCorrect,txtStudentName,txtStudentCareer,txtStudentControlNumber;
     private Button btnDone;
@@ -57,9 +57,9 @@ public class TotalActivity extends AppCompatActivity {
             datosHash.put("Calificacion", String.valueOf(grade));
             datosHash.put("RespuestasCorrectas", numberCorrectAnswers);
 
-            ref.child(user.getUid()).child("nivelUno/Calificacion").setValue(String.valueOf(grade));
-            ref.child(user.getUid()).child("nivelUno/RespuestasCorrectas").setValue(numberCorrectAnswers);
-            ref.child(user.getUid()).child("nivelUno/hecho").setValue("true");
+            ref.child(user.getUid()).child("nivelCuatro/Calificacion").setValue(String.valueOf(grade));
+            ref.child(user.getUid()).child("nivelCuatro/RespuestasCorrectas").setValue(numberCorrectAnswers);
+            ref.child(user.getUid()).child("nivelCuatro/hecho").setValue("true");
 
             txtCorrect.setText(String.valueOf(grade));
             txtTotal.setText(numberCorrectAnswers + " OUT OF 20");
@@ -75,8 +75,8 @@ public class TotalActivity extends AppCompatActivity {
 
 
         }else{
-            String Calificacion = pref.getString("nivelUnoCal",null);
-            String RespuestasCorrectas = pref.getString("nivelUnoRes",null);
+            String Calificacion = pref.getString("nivelCuatroCal",null);
+            String RespuestasCorrectas = pref.getString("nivelCuatroRes",null);
 
             txtStudentName.setText(CompleteName);
             txtStudentCareer.setText(Carrera);
@@ -96,7 +96,7 @@ public class TotalActivity extends AppCompatActivity {
         btnDone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(TotalActivity.this, LevelsActivity.class));
+                startActivity(new Intent(TotalLevel4Activity.this, LevelsActivity.class));
             }
         });
 

@@ -13,19 +13,23 @@
         android:theme="@style/AppTheme">
         <activity android:name=".TestActivity" />
         <activity android:name=".SignupActivity" />
-        <activity android:name=".LevelsActivity">
+        <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>LoginActivity
+            </intent-filter>
+            LoginActivity
         </activity>
-        <activity android:name=".LoginActivity" />
+        <activity android:name=".LevelsActivity" />
         <activity android:name=".Level1Activity" />
         <activity android:name=".Level2Activity" />
         <activity android:name=".Level3Activity" />
         <activity android:name=".Level4Activity" />
-        <activity android:name=".TotalActivity"></activity>
+        <activity android:name=".TotalActivity" />
+        <activity android:name=".TotalLevel2Activity" />
+        <activity android:name=".TotalLevel3Activity" />
+        <activity android:name=".TotalLevel4Activity"></activity>
     </application>
 
 </manifest>

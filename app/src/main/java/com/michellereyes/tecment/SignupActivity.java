@@ -1,6 +1,7 @@
 package com.michellereyes.tecment;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -141,12 +142,36 @@ public class SignupActivity extends AppCompatActivity implements AdapterView.OnI
                                     datosHash.put("ApellidoMaterno", secondLastName);
                                     datosHash.put("NumeroControl", controlNumber);
                                     datosHash.put("Carrera", career);
-                                    datosHash.put("nivelUno","true");
-                                    datosHash.put("nivelDos","false");
-                                    datosHash.put("nivelTres","false");
-                                    datosHash.put("nivelCuatro","false");
+
+                                    datosHash.put("nivelUno/hecho","false");
+                                    datosHash.put("nivelUno/Calificacion","");
+                                    datosHash.put("nivelUno/RespuestasCorrectas","");
+
+                                    datosHash.put("nivelDos/hecho","false");
+                                    datosHash.put("nivelDos/Calificacion","");
+                                    datosHash.put("nivelDos/RespuestasCorrectas","");
+
+                                    datosHash.put("nivelTres/hecho","false");
+                                    datosHash.put("nivelTres/Calificacion","");
+                                    datosHash.put("nivelTres/RespuestasCorrectas","");
+
+                                    datosHash.put("nivelCuatro/hecho","false");
+                                    datosHash.put("nivelCuatro/Calificacion","");
+                                    datosHash.put("nivelCuatro/RespuestasCorrectas","");
+
 
                                     ref.setValue(datosHash);
+
+                                    SharedPreferences pref = getApplicationContext().getSharedPreferences("Usuario", 0); // 0 - for private mode
+                                    SharedPreferences.Editor editor = pref.edit();
+
+                                    editor.putString("Nombres", nombres); // Storing boolean - true/false
+                                    editor.putString("ApellidoPaterno", firstLastName);
+                                    editor.putString("ApellidoMaterno", secondLastName);
+                                    editor.putString("NumeroControl", controlNumber);
+                                    editor.putString("Carrera",career);
+                                    editor.commit();
+
                                     startActivity(new Intent(SignupActivity.this,LevelsActivity.class));
                                     finish();
                                 }

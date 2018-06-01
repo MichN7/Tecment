@@ -1,6 +1,7 @@
 package com.michellereyes.tecment;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -16,6 +17,12 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -24,7 +31,9 @@ public class LoginActivity extends AppCompatActivity {
     private ProgressBar progressBar;
     private Button btnSignup, btnLogin, btnReset;
 
-
+    FirebaseDatabase database = FirebaseDatabase.getInstance();
+    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+    final DatabaseReference ref = database.getReference();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,6 +96,71 @@ public class LoginActivity extends AppCompatActivity {
                                         Toast.makeText(LoginActivity.this, getString(R.string.auth_failed), Toast.LENGTH_LONG).show();
                                     }
                                 } else {
+
+                                    ref.child(user.getUid()+"/").addValueEventListener(new ValueEventListener() {
+                                        @Override
+                                        public void onDataChange(DataSnapshot dataSnapshot) {
+
+                                            String names = dataSnapshot.child("Nombres").getValue().toString();
+                                            String firstLastName = dataSnapshot.child("ApellidoPaterno").getValue().toString();
+                                            String secondLastName = dataSnapshot.child("ApellidoMaterno").getValue().toString();
+                                            String controlNumber = dataSnapshot.child("NumeroControl").getValue().toString();
+                                            String career = dataSnapshot.child("Carrera").getValue().toString();
+
+                                            String levelOneCal = dataSnapshot.child("nivelUno/Calificacion").getValue().toString();
+                                            String levelOneAns = dataSnapshot.child("nivelUno/RespuestasCorrectas").getValue().toString();
+                                            String levelOneDone = dataSnapshot.child("nivelUno/hecho").getValue().toString();
+
+                                            String levelTwoCal = dataSnapshot.child("nivelDos/Calificacion").getValue().toString();
+                                            String levelTwoAns = dataSnapshot.child("nivelDos/RespuestasCorrectas").getValue().toString();
+                                            String levelTwoDone = dataSnapshot.child("nivelDos/hecho").getValue().toString();
+
+                                            String levelThreeCal = dataSnapshot.child("nivelTres/Calificacion").getValue().toString();
+                                            String levelThreeAns = dataSnapshot.child("nivelTres/RespuestasCorrectas").getValue().toString();
+                                            String levelThreeDone = dataSnapshot.child("nivelTres/hecho").getValue().toString();
+
+                                            String levelFourCal = dataSnapshot.child("nivelCuatro/Calificacion").getValue().toString();
+                                            String levelFourAns = dataSnapshot.child("nivelCuatro/RespuestasCorrectas").getValue().toString();
+                                            String levelFourDone = dataSnapshot.child("nivelCuatro/hecho").getValue().toString();
+
+                                            SharedPreferences pref = getApplicationContext().getSharedPreferences("Usuario", 0); // 0 - for private mode
+                                            SharedPreferences.Editor editor = pref.edit();
+
+                                            editor.putString("Nombres", names); // Storing boolean - true/false
+                                            editor.putString("ApellidoPaterno", firstLastName);
+                                            editor.putString("ApellidoMaterno", secondLastName);
+                                            editor.putString("NumeroControl", controlNumber);
+                                            editor.putString("Carrera",career);
+
+                                            editor.putString("nivelUnoCal",levelOneCal);
+                                            editor.putString("nivelUnoRes",levelOneAns);
+                                            editor.putString("nivelUnoHecho",levelOneDone);
+
+                                            editor.putString("nivelDosCal",levelTwoCal);
+                                            editor.putString("nivelDosRes",levelTwoAns);
+                                            editor.putString("nivelDosHecho",levelTwoDone);
+
+                                            editor.putString("nivelTresCal",levelThreeCal);
+                                            editor.putString("nivelTresRes",levelThreeAns);
+                                            editor.putString("nivelTresHecho",levelThreeDone);
+
+                                            editor.putString("nivelCuatroCal",levelFourCal);
+                                            editor.putString("nivelCuatroRes",levelFourCal);
+                                            editor.putString("nivelCuatroHecho",levelFourDone);
+
+                                            editor.commit();
+
+                                            Toast.makeText(LoginActivity.this,names,Toast.LENGTH_LONG).show();
+
+                                        }
+
+                                        @Override
+                                        public void onCancelled(DatabaseError databaseError) {
+
+                                        }
+                                    });
+
+
                                     Intent intent = new Intent(LoginActivity.this, LevelsActivity.class);
                                     startActivity(intent);
                                     finish();

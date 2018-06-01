@@ -119,6 +119,11 @@ public class Level1Activity extends AppCompatActivity {
 
                 if(count != questions.length-1){
 
+                    answerA.setChecked(false);
+                    answerB.setChecked(false);
+                    answerC.setChecked(false);
+                    answerD.setChecked(false);
+
                     int selectedId = radioGroup.getCheckedRadioButtonId();
 
 
@@ -130,7 +135,7 @@ public class Level1Activity extends AppCompatActivity {
                     }
 
                     count += 1;
-                    answerA.setChecked(true);
+
                     question.setText(questions[count]);
                     answerA.setText(answers[count][0]);
                     answerB.setText(answers[count][1]);

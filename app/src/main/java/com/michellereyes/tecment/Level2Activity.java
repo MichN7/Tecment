@@ -130,7 +130,10 @@ public class Level2Activity extends AppCompatActivity {
                     }
 
                     count += 1;
-                    answerA.setChecked(true);
+                    answerA.setChecked(false);
+                    answerB.setChecked(false);
+                    answerC.setChecked(false);
+                    answerD.setChecked(false);
                     question.setText(questions[count]);
                     answerA.setText(answers[count][0]);
                     answerB.setText(answers[count][1]);
@@ -141,7 +144,7 @@ public class Level2Activity extends AppCompatActivity {
 
                 }else{
 
-                    Intent intent = new Intent(getBaseContext(), TotalActivity.class);
+                    Intent intent = new Intent(getBaseContext(), TotalLevel2Activity.class);
                     intent.putExtra("CORRECT_ANSWERS", correctS);
                     startActivity(intent);
                 }
